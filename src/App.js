@@ -263,23 +263,23 @@ class App extends Component {
 
   renderThumbnailImages = () => {
     const {category} = this.state
-    return (
-      <ul className="thumbnails-container">
-        {imagesList.map(each => {
-          each.category === category && (
-            <li>
-              <button type="button">
-                <img
-                  src={each.thumbnailUrl}
-                  alt="thumbnail"
-                  className="thumbnail-image"
-                />
-              </button>
-            </li>
-          )
-        })}
-      </ul>
-    )
+
+    imagesList.map(each => {
+      if (each.category === category) {
+        return (
+          <li key={each.id}>
+            <button type="button" className="thumbnail-button">
+              <img
+                src={each.thumbnailUrl}
+                alt="thumbnail"
+                className="thumbnail-image"
+              />
+            </button>
+          </li>
+        )
+      }
+      return null
+    })
   }
 
   render() {
@@ -326,7 +326,7 @@ class App extends Component {
             ))}
           </ul>
         </div>
-        {this.renderThumbnailImages()}
+        <ul className="thumbnails-container">{this.renderThumbnailImages()}</ul>
       </div>
     )
   }

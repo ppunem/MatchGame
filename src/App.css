@@ -90,3 +90,7 @@ li {
   width: 250px;
   margin: 10px;
 }
+.thumbnail-button {
+  background-color: transparent;
+  border: none;
+}
